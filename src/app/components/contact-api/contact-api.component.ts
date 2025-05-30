@@ -41,4 +41,37 @@ export class ContactApiComponent {
     
   } 
 
+  ModifPost() : void{
+    this._contactApi.ModifPost(this.postModifie).subscribe({
+      next : (data) => {
+        //On retrouve le post dans la liste initiale et on le remplace
+        const index = this.posts.findIndex((p) => p.id === data.id);
+        if (index !== -1) {
+          this.posts[index] = data;
+          this.etatModif = false;
+          
+        }
+      },
+      error : (error) => {
+        console.error("Erreur lors de la modif :", error.message)
+      },
+      complete: () => {
+        console.log("Modification ok !!!!");
+
+      }
+    })
+  } 
+
+
+  /**
+   * Active l'état de modifcation et clone le post cliqué
+   * @param post le post sélectionner pour modification
+   */
+  Modif(post : Post) : void {
+    // on clone le post pour éviter de modifir la liste
+    this.postModifie = {...post};
+    this.etatModif = true;
+
+  }
+
 }

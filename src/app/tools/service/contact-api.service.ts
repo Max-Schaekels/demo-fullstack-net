@@ -21,6 +21,9 @@ export class ContactApiService {
   // Create
 
   // Update
+  ModifPost(post : Post) : Observable<Post>{
+    return this._http.put<Post>(`${this._apiUrl}/${post.id}`, post);
+  }
 
   // Delete
 }

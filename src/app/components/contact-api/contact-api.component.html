@@ -2,15 +2,38 @@
     <h1 class="text-primary mb-4">Contact APIE demo</h1>
 
     <!-- Boucle sur la liste des posts (avec suivis d'index)-->
-     @for (post of posts; track $index) {
-        <div class="card shadow-sm mb-3">
-            <div class="card-body">
-                <h5 class="card-title">{{post.title}}</h5>
-                <p class="card-text">{{post.body}}</p>
-                <button class="btn btn-outline-primary">Modifier</button>
-
-            </div>
+    @for (post of posts; track $index) {
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="card-title">{{post.title}}</h5>
+            <p class="card-text">{{post.body}}</p>
+            <button class="btn btn-outline-primary" (click)="Modif(post)">Modifier</button>
 
         </div>
-     }
+
+    </div>
+    }
+
+    @if (etatModif) {
+    <div class="mt-4">
+        <h4 class="text-secondary">Modifier un post</h4>
+        <div class="form-group mb-3">
+            <label for="titre">Titre</label>
+            <input id="titre" type="text" class="form-control" [(ngModel)]="postModifie.title">
+        </div>
+        <div class="form-group mb-3">
+            <label for="contenu">Contenu</label>
+            <textarea id="contenu" type="text" class="form-control" rows="5" [(ngModel)]="postModifie.body"></textarea>
+        </div>
+
+        <button class="btn btn-primary" (click)="ModifPost()">Enregistrer</button>
+        <button class="btn btn-secondary" (click)="etatModif = false">Annuler</button>
+    </div>
+    }
+
+    @if (messageErreur) {
+        <div class="alert alert-danger mt-3">
+            {{messageErreur}}
+        </div>
+    }
 </div>
