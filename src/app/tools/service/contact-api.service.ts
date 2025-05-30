@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Post } from '../../models/post.models';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class ContactApiService {
   // CRUD 
 
   // Get ALL
-  RecupererPosts() {
+  RecupererPosts() : Observable<Post[]> {
     return this._http.get<Post[]>(this._apiUrl);
   } 
 

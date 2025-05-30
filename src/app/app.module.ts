@@ -5,11 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { ContactApiComponent } from './components/contact-api/contact-api.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent
+    NavBarComponent,
+    ContactApiComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
