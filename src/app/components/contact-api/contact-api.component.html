@@ -1,1 +1,16 @@
-<p>contact-api works!</p>
+<div class="container mt-4">
+    <h1 class="text-primary mb-4">Contact APIE demo</h1>
+
+    <!-- Boucle sur la liste des posts (avec suivis d'index)-->
+     @for (post of posts; track $index) {
+        <div class="card shadow-sm mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{post.title}}</h5>
+                <p class="card-text">{{post.body}}</p>
+                <button class="btn btn-outline-primary">Modifier</button>
+
+            </div>
+
+        </div>
+     }
+</div>
